@@ -56,12 +56,18 @@ shp2raster <- function(fileName, extentValue){
 # RUN
 #
 void_main <- function(){
-  getShapefileInfo("vegtype_2000/vegtype_2000.shp")
+  #----------caragua--------------------------
+  
+  getShapefileInfo("ignore_data/urbano_caragua_coluna_classes2010/caragua_classes2010.shp")
+  
+  # -------- vegtype_2000----------------------
+  
+  #getShapefileInfo("vegtype_2000/vegtype_2000.shp")
   
   # Set up a raster "template" to use in rasterize()
   #extent      : -74, -34.5, -34, 5  (xmin, xmax, ymin, ymax)
   
-  extentValue <- c(-74, -34.5, -34, 5)
-  shp2raster("vegtype_2000/vegtype_2000.shp", extentValue)
+  #extentValue <- c(-74, -34.5, -34, 5)
+  #shp2raster("vegtype_2000/vegtype_2000.shp", extentValue)
 }
 void_main()

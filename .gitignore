@@ -26,3 +26,4 @@ vignettes/*.pdf
 
 # Data test
 data/ignore_data/
+.Rproj.user

@@ -3,6 +3,9 @@ setwd("data")
 # librarys
 library(raster)
 library(png)
+#
+# ---------Colors methods--------------------------
+#
 
 exampleColors <- function(){
   # Colors
@@ -19,7 +22,6 @@ exampleColors <- function(){
   rgb(1,1,0) #FFFF00 or 255, 255, 0
   
   # 0 - 255
-  
   # red
   rgb(255,0,0, maxColorValue=255) #FF0000 or 255, 0, 0
   
@@ -28,43 +30,99 @@ exampleColors <- function(){
   
 }
 
-getRGB <- function(filepath){
+isNotValidColor <- function(color.actual){
+  color.yellow <- rgb(255,255,0, maxColorValue=255)#A
+  color.orange <- rgb(255,130,0, maxColorValue=255)#B
+  color.red <- rgb(255,0,0, maxColorValue=255)#C  
   
-  if(!file.exists(filepath))
-    return;
-  
-  img <- readPNG(filepath)
-  
-  pix.top.left <- img[1,1,]     # row 1, column 1
-  pix.bottom.left <- img[3,1,]  # row 3, column 1
-  pix.top.right <- img[1,3,]    # row 1, column 3
-  
-  pix.top.left # 0.7019608 0.7098039 0.7137255 1.0000000
-  pix.bottom.left
-  pix.top.right
+  return(color.actual != color.yellow
+     && color.actual != color.orange
+     && color.actual != color.red)
 }
 
+makeTransparent = function(..., alpha=0.5) {
+  
+  if(alpha<0 | alpha>1) stop("alpha must be between 0 and 1")
+  
+  alpha = floor(255*alpha)  
+  newColor = col2rgb(col=unlist(list(...)), alpha=FALSE)
+  
+  .makeTransparent = function(col, alpha) {
+    rgb(red=col[1], green=col[2], blue=col[3], alpha=alpha, maxColorValue=255)
+  }
+  
+  newColor = apply(newColor, 2, .makeTransparent, alpha=alpha)
+  
+  return(newColor)
+  
+}
 
+#
+# ---------Raster methods--------------------------
+#
 
-buildRaster <- function(filepath){
-
-  if(!file.exists(filepath))
+getRasterInfo <- function(r){
+  if(!is.raster(r))
     return;
   
-  img <- readPNG(filepath)
+  # ---------- informacoes shapefile caragua --------------
+  
+  #OGR data source with driver: ESRI Shapefile 
+  #Source: "ignore_data/urbano_caragua_coluna_classes2010/caragua_classes2010.shp", layer: "caragua_classes2010"
+  #with 209 features
+  #It has 1 fields
+  #class       : SpatialPolygonsDataFrame 
+  #features    : 209 
+  #extent      : -58.82195, -58.58221, -23.74066, -23.5563  (xmin, xmax, ymin, ymax)
+  #coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
+  #variables   : 1
+  #names       : CLASES2010 
+  #min values  :          1 
+  #max values  :          3 
+  
+  # --------------------------------------------------------
+  
+  print(projection(r))
+  
+  print(r)
+  
+  # cell number and values from coordinate
+  
+  #cell <- cellFromXY(r, cbind(-58, -23))	# get cell number from coordinates Log -58, Lat -23
+  #cell.ts <- r[cell]	# get values for this cell
+  #cell.ts
+  #plot(as.vector(cell.ts), type="l")
+}
+
+buildRaster <- function(img){
+  
+  if(!is.array(img))
+    return;
   
   # Convert imagedata to raster
-  rst.blue <- raster(img[,,1])
+  
+  rst.red <- raster(img[,,1])
   rst.green <- raster(img[,,2])
-  rst.red <- raster(img[,,3])
+  rst.blue <- raster(img[,,3])
   
   st <- stack(rst.red, rst.green, rst.blue)
   
+  # Give it lat/lon coords 
+  #ex:  extent(rast) <- c(36,37,-3,-2) # for 36-37°E, 3-2°S
+  
+  #caragua: -58.82195, -58.58221, -23.74066, -23.5563  (xmin, xmax, ymin, ymax)
+  extent(st) <- c(-58.82195, -58.58221, -23.74066, -23.5563)
+  
   # set CRS
-  crs(st) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0" 
+  crs(st) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+  
   
   # Plot single raster images and RGB composite
   plot(st,main = c("Blue band", "Green band", "Red band"))
+  
+  ## get raster info
+  
+  getRasterInfo(st)
   
   #
   # Write Raster
@@ -74,12 +132,61 @@ buildRaster <- function(filepath){
   
 }
 
+png.to.raster <- function(filepath){
+  
+  if(!file.exists(filepath))
+    return;
+  
+  img <- readPNG(filepath)
+  
+  for(i in 1:nrow(img)){
+    for(j in 1:ncol(img)){
+      img.red <- img[i, j, 1]
+      img.green <- img[i, j, 2]
+      img.blue <- img[i, j, 3]
+      
+      color.actual <- rgb(img.red, img.green, img.blue)
+      
+      if(isNotValidColor(color.actual)){
+        # ------- BUG ---------
+        #img[i, j, ] <- NA
+        # ------- BUG ---------
+      }
+    }
+  }
+  
+  # 
+  # 
+  # # Convert imagedata to raster
+  # 
+  buildRaster(img)
+}
 #
-# RUN
+# ---------------TESTs-----------------------------
+#
+test <- function(){
+  #exampleColors()
+  #isNotValidColor(rgb(0,1,0)) # verde
+  #isNotValidColor(rgb(1,1,0)) # amarelo
+  
+  print(makeTransparent(2, 4))
+  #"#FF00007F" "#0000FF7F"
+  
+  print(makeTransparent("red", "blue"))
+  #"#FF00007F" "#0000FF7F"
+  
+  print(makeTransparent(rgb(1,0,0), rgb(0,0,1)))
+  #"#FF00007F" "#0000FF7F"
+  
+  print(makeTransparent("red", "blue", alpha=0.8))
+  #"#FF0000CC" "#0000FFCC"
+}
+#
+# ---------------RUN-------------------------------
 #
 void_main <- function(){
-  #exampleColors()
-  buildRaster('INITIAL2010_REALDATA.PNG')
+  #test()
+  png.to.raster('INITIAL2010_REALDATA.PNG')
 }
 void_main()
 
