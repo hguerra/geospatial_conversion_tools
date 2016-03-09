@@ -18,8 +18,7 @@ require(rgdal)
 
 #Read the .csv file
 
-#plot.locations_caragua <- read.csv("caragua.csv",stringsAsFactors = FALSE)
-plot.locations_caragua <- read.table("Koeppen-Geiger-ASCII.txt", header=TRUE)
+plot.locations_caragua <- read.table("ignore_data/caragua.csv", header=TRUE, sep=";")
 
 #look at the data structure
 str(plot.locations_caragua)
@@ -76,5 +75,5 @@ crs(rs)
 
 writeRaster(rs,"tiff_from_csv.tif",format='GTiff', overwrite=TRUE)
 
-
-#
+#Warning message:
+#  In .local(x, filename, ...) : all cell values are NA

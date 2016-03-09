@@ -36,8 +36,8 @@ isNotValidColor <- function(color.actual){
   color.red <- rgb(255,0,0, maxColorValue=255)#C  
   
   return(color.actual != color.yellow
-     && color.actual != color.orange
-     && color.actual != color.red)
+         && color.actual != color.orange
+         && color.actual != color.red)
 }
 
 makeTransparent = function(..., alpha=0.5) {
@@ -82,8 +82,10 @@ getRasterInfo <- function(r){
   
   # --------------------------------------------------------
   
+  print("CRS:")
   print(projection(r))
   
+  print("RASTER INFO:")
   print(r)
   
   # cell number and values from coordinate
@@ -118,7 +120,7 @@ buildRaster <- function(img){
   
   
   # Plot single raster images and RGB composite
-  plot(st,main = c("Blue band", "Green band", "Red band"))
+  #plot(st,main = c("Blue band", "Green band", "Red band"))
   
   ## get raster info
   
@@ -128,10 +130,7 @@ buildRaster <- function(img){
   # Write Raster
   #
   writeRaster(st,"st.tif",format='GTiff', overwrite=TRUE)
-  #writeRaster(st,"st.tif",format='GTiff', datatype='INT2U', overwrite=TRUE) # fundo fica preto
-  
 }
-
 png.to.raster <- function(filepath){
   
   if(!file.exists(filepath))
@@ -141,26 +140,51 @@ png.to.raster <- function(filepath){
   
   for(i in 1:nrow(img)){
     for(j in 1:ncol(img)){
-      img.red <- img[i, j, 1]
-      img.green <- img[i, j, 2]
-      img.blue <- img[i, j, 3]
-      
-      color.actual <- rgb(img.red, img.green, img.blue)
+      color.actual <- rgb(img[i, j, 1], img[i, j, 2], img[i, j, 3])
       
       if(isNotValidColor(color.actual)){
-        # ------- BUG ---------
-        #img[i, j, ] <- NA
-        # ------- BUG ---------
+        img[i, j, 1] <- 1 #red
+        img[i, j, 2] <- 0 #green
+        img[i, j, 3] <- 1 #blue
       }
     }
   }
-  
-  # 
-  # 
-  # # Convert imagedata to raster
-  # 
+  # Convert imagedata to raster
   buildRaster(img)
 }
+png.to.raster2<- function(filepath){
+  
+  if(!file.exists(filepath))
+    return;
+  
+  img <- readPNG(filepath)
+  
+  color.yellow <- rgb(255,255,0, maxColorValue=255)#A
+  color.orange <- rgb(255,130,0, maxColorValue=255)#B
+  color.red <- rgb(255,0,0, maxColorValue=255)#C  
+  
+  raster.img <- raster(nrow= nrow(img), ncol= ncol(img))
+  
+  for(i in 1:nrow(img)){
+    for(j in 1:ncol(img)){
+      color.actual <- rgb(img[i, j, 1], img[i, j, 2], img[i, j, 3])
+      
+      if(color.actual == color.red){
+        raster.img[i,j] <- 1
+      }else if(color.actual == color.orange){
+        raster.img[i,j] <- 2
+      }else if(color.actual == color.yellow){
+        raster.img[i,j] <- 3
+      }else{
+        raster.img[i, j] <- NA
+      }
+    }
+  }# end for
+  extent(raster.img) <- c(-58.82195, -58.58221, -23.74066, -23.5563)
+  crs(raster.img) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+  writeRaster(raster.img,"raster-img4.tif",format='GTiff', overwrite=TRUE)
+}#END
+
 #
 # ---------------TESTs-----------------------------
 #
@@ -168,16 +192,12 @@ test <- function(){
   #exampleColors()
   #isNotValidColor(rgb(0,1,0)) # verde
   #isNotValidColor(rgb(1,1,0)) # amarelo
-  
   print(makeTransparent(2, 4))
   #"#FF00007F" "#0000FF7F"
-  
   print(makeTransparent("red", "blue"))
   #"#FF00007F" "#0000FF7F"
-  
   print(makeTransparent(rgb(1,0,0), rgb(0,0,1)))
   #"#FF00007F" "#0000FF7F"
-  
   print(makeTransparent("red", "blue", alpha=0.8))
   #"#FF0000CC" "#0000FFCC"
 }
@@ -186,7 +206,7 @@ test <- function(){
 #
 void_main <- function(){
   #test()
-  png.to.raster('INITIAL2010_REALDATA.PNG')
+  png.to.raster2('real.png')
 }
 void_main()
 
