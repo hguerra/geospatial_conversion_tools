@@ -28,6 +28,7 @@ if (!file.exists(img.filepath))
 img <- readPNG(img.filepath)
 raster.img <- raster(nrow = nrow(img), ncol = ncol(img))
 
+print("Iniciando...")
 for (i in 1:nrow(img)) {
   for (j in 1:ncol(img)) {
     color.actual <- rgb(img[i, j, 1], img[i, j, 2], img[i, j, 3])
@@ -50,3 +51,4 @@ writeRaster(raster.img,
             raster.name,
             format = 'GTiff',
             overwrite = TRUE)
+print("Finalizado!")
