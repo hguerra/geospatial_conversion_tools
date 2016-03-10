@@ -4,15 +4,14 @@ setwd("data")
 # librarys
 library(rgdal)
 
-fileName <- "ignore_data/caragua/caragua_editado.shp"
-
-# Get the layer names
-fileLayers <- ogrListLayers(dsn = fileName)
+fileName <- "ignore_data/caragua.shp"
 
 # Load the file for the first layer
-pols <- readOGR(dsn = fileName, fileLayers[1])
+pols <- readOGR(dsn = fileName, "caragua")
 
-pos = c(75, 3040, 3350, 4950, 5053)
+#pos = c(75, 3040, 3350, 4950, 5053)
+#(upRed, downRed, upBlue, x, x)
+pos = c(85, 3040, 3350, 4970, 5053)
 
 plot(pols)
 

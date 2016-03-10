@@ -16,10 +16,11 @@ color.orange <- rgb(255, 130, 0, maxColorValue = 255)#B
 color.yellow <- rgb(255, 255, 0, maxColorValue = 255)#A
 # Raster
 img.filepath <- "INITIAL2010_REALDATA.PNG"
-raster.name <- "raster-img4.tif"
+raster.name <- "raster-img5.tif"
 raster.proj <-
   "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-raster.extent <- c(-58.82195,-58.58221,-23.74066,-23.5563)
+#extent      : -45.48924, -45.25525, -23.745, -23.539(xmin, xmax, ymin, ymax)
+raster.extent <- c(-45.48924, -45.25525, -23.745, -23.539)
 ##############################################################
 #####################Engine###################################
 if (!file.exists(img.filepath))
