@@ -40,10 +40,3 @@ extent(rs) <- raster.extent
 writeRaster(rs,
             "classes_sociais_2010/teste_caragua_classes2010_regioes.tif",
             format = 'GTiff',datatype='INT2U', overwrite=TRUE)
-
-# grd <- readGDAL("classes_sociais_2010/caragua_classes2010_regioes.tif")
-# 
-# writeGDAL(grd,
-#           fname = "classes_sociais_2010/float32_caragua_classes2010_regioes.tif",
-#           drivername = "GTiff",
-#           type = "Float32")

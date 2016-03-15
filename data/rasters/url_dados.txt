@@ -1,0 +1,9 @@
+url default: dl.dropboxusercontent.com
+
+int16_caragua_classes…ioes.tif
+https://www.dropbox.com/s/p984a63slm4vpb3/int16_caragua_classes2010_regioes.tif?dl=0
+https://dl.dropboxusercontent.com/s/p984a63slm4vpb3/int16_caragua_classes2010_regioes.tif?dl=0
+
+rgb_int16_caragua_cla…ioes.tif
+https://www.dropbox.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0
+https://dl.dropboxusercontent.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0

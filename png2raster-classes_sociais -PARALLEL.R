@@ -1,10 +1,18 @@
 ##############################################################
 ####################SetEnvironment###########################
-## data path
-setwd("data")
 # librarys
 library(raster)
 library(png)
+library(parallel) 
+# Calculate the number of cores
+no_cores <- detectCores() - 1
+ 
+# Initiate cluster
+cl <- makeCluster(no_cores)
+registerDoParallel(cl)
+
+#start time
+strt<-Sys.time()
 ##############################################################
 #####################Variables################################
 # Classe social
@@ -15,8 +23,8 @@ color.red <- rgb(255, 0, 0, maxColorValue = 255)#C
 color.orange <- rgb(255, 130, 0, maxColorValue = 255)#B
 color.yellow <- rgb(255, 255, 0, maxColorValue = 255)#A
 # Raster
-img.filepath <- "INITIAL2010_REALDATA.PNG"
-raster.name <- "raster-img5.tif"
+img.filepath <- "SIMULACAO2025_BASELINE.png"
+raster.name <- "int16_simulacao2025_baseline.tif"
 raster.proj <-
   "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 #extent      : -45.48924, -45.25525, -23.745, -23.539(xmin, xmax, ymin, ymax)
@@ -56,3 +64,7 @@ writeRaster(
   overwrite = TRUE
 )
 print("Finalizado!")
+stopCluster(cl)
+#end time
+print(Sys.time()-strt) #Time difference of 44.30828 secs
+#END

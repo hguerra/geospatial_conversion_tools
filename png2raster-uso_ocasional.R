@@ -1,26 +1,30 @@
 ##############################################################
 ####################SetEnvironment###########################
-## data path
-setwd("data")
 # librarys
 library(raster)
 library(png)
+#start time
+strt<-Sys.time()
 ##############################################################
 #####################Variables################################
 # Classe social
-classe.a <- 3
-classe.b <- 2
-classe.c <- 1
-color.red <- rgb(255, 0, 0, maxColorValue = 255)#C
-color.orange <- rgb(255, 130, 0, maxColorValue = 255)#B
-color.yellow <- rgb(255, 255, 0, maxColorValue = 255)#A
+classe.ocasional1 <- 1
+classe.ocasional2 <- 2
+classe.ocasional3 <- 3
+classe.ocasional4 <- 4
+classe.ocasional5 <- 5
+color.ocasional1 <- rgb(255,204,255, maxColorValue = 255)
+color.ocasional2 <- rgb(242,160,241, maxColorValue = 255)
+color.ocasional3 <- rgb(230,117,228, maxColorValue = 255)
+color.ocasional4 <- rgb(214,71,212, maxColorValue = 255)
+color.ocasional5 <- rgb(199,0,199, maxColorValue = 255)
 # Raster
-img.filepath <- "INITIAL2010_REALDATA.PNG"
-raster.name <- "raster-img5.tif"
+img.filepath <- "USO_OCASIONAL_TEST.png"
+raster.name <- "int16_uso_ocasional.tif"
 raster.proj <-
   "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 #extent      : -45.48924, -45.25525, -23.745, -23.539(xmin, xmax, ymin, ymax)
-raster.extent <- c(-45.48924,-45.25525,-23.745,-23.539)
+raster.extent <- c(-45.48924, -45.25525, -23.745, -23.539)
 ##############################################################
 #####################Engine###################################
 if (!file.exists(img.filepath))
@@ -33,13 +37,17 @@ print("Iniciando...")
 for (i in 1:nrow(img)) {
   for (j in 1:ncol(img)) {
     color.actual <- rgb(img[i, j, 1], img[i, j, 2], img[i, j, 3])
-    if (color.actual == color.red) {
-      raster.img[i, j] <- classe.c
-    } else if (color.actual == color.orange) {
-      raster.img[i, j] <- classe.b
-    } else if (color.actual == color.yellow) {
-      raster.img[i, j] <- classe.a
-    } else{
+    if (color.actual == color.ocasional1) {
+      raster.img[i, j] <- classe.ocasional1
+    } else if (color.actual == color.ocasional2) {
+      raster.img[i, j] <- classe.ocasional2
+    } else if (color.actual == color.ocasional3) {
+      raster.img[i, j] <- classe.ocasional3
+    } else if (color.actual == color.ocasional4) {
+      raster.img[i, j] <- classe.ocasional4
+    }else if (color.actual == color.ocasional5) {
+      raster.img[i, j] <- classe.ocasional5
+    }else{
       raster.img[i, j] <- NA
     }
   }
@@ -56,3 +64,6 @@ writeRaster(
   overwrite = TRUE
 )
 print("Finalizado!")
+#end time
+print(Sys.time()-strt) # Time difference of 45.2793 secs
+#END
