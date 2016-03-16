@@ -1,0 +1,5 @@
+# Exportar arquivo de mapa de cores gerado pela QGIS
+INTERPOLATION:INTERPOLATED
+1,255,0,0,255,1.000000
+2,255,130,0,255,2.000000
+3,255,255,0,255,3.000000
