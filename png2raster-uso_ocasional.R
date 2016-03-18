@@ -1,7 +1,5 @@
 ##############################################################
 ####################SetEnvironment###########################
-## data path
-setwd("data")
 # librarys
 library(raster)
 library(png)
@@ -9,45 +7,20 @@ library(png)
 strt<-Sys.time()
 ##############################################################
 #####################Variables################################
-# Colors
-# Get color values:(col2rgb(color)/255)
-# ex: 
-# color.red <- rgb(255, 0, 0, maxColorValue = 255)
-# rgb.red <- col2rgb(color.red)/255
-#
-# Color 1
-color.ocasional1.red <- 1
-color.ocasional1.green <- 0.8
-color.ocasional1.blue <- 1
-#
-# Color 2
-color.ocasional2.red <- 0.9490196
-color.ocasional2.green <- 0.6274510
-color.ocasional2.blue <- 0.9450980
-#
-# Color 3
-color.ocasional3.red <- 0.9019608
-color.ocasional3.green <- 0.4588235
-color.ocasional3.blue <- 0.8941176
-#
-# Color 4
-color.ocasional4.red <- 0.8392157
-color.ocasional4.green <- 0.2784314
-color.ocasional4.blue <- 0.8313725
-#
-# Color 5
-color.ocasional5.red <-  0.7803922
-color.ocasional5.green <- 0.0000000
-color.ocasional5.blue <- 0.7803922
-# Raster values
+# Classe social
 classe.ocasional1 <- 1
 classe.ocasional2 <- 2
 classe.ocasional3 <- 3
 classe.ocasional4 <- 4
 classe.ocasional5 <- 5
-# Raster/Image
-img.filepath <- "ignore_data/USO_OCASIONAL_200.PNG"
-raster.name <- "int16_uso_ocasional-linux.tif"
+color.ocasional1 <- rgb(255,204,255, maxColorValue = 255)
+color.ocasional2 <- rgb(242,160,241, maxColorValue = 255)
+color.ocasional3 <- rgb(230,117,228, maxColorValue = 255)
+color.ocasional4 <- rgb(214,71,212, maxColorValue = 255)
+color.ocasional5 <- rgb(199,0,199, maxColorValue = 255)
+# Raster
+img.filepath <- "USO_OCASIONAL_100.png"
+raster.name <- "int16_uso_ocasional_100.tif"
 raster.proj <-
   "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 #extent      : -45.48924, -45.25525, -23.745, -23.539(xmin, xmax, ymin, ymax)
@@ -63,18 +36,16 @@ raster.img <- raster(nrow = nrow(img), ncol = ncol(img))
 print("Iniciando...")
 for (i in 1:nrow(img)) {
   for (j in 1:ncol(img)) {
-  	color.red <- img[i, j, 1]
-    color.green <- img[i, j, 2]
-    color.blue <- img[i, j, 3]
-    if(color.red == color.ocasional1.red && color.green == color.ocasional1.green && color.blue == color.ocasional1.blue){
+    color.actual <- rgb(img[i, j, 1], img[i, j, 2], img[i, j, 3])
+    if (color.actual == color.ocasional1) {
       raster.img[i, j] <- classe.ocasional1
-    }else if(color.red == color.ocasional2.red && color.green == color.ocasional2.green && color.blue == color.ocasional2.blue){
+    } else if (color.actual == color.ocasional2) {
       raster.img[i, j] <- classe.ocasional2
-    }else if(color.red == color.ocasional3.red && color.green == color.ocasional3.green && color.blue == color.ocasional3.blue){
+    } else if (color.actual == color.ocasional3) {
       raster.img[i, j] <- classe.ocasional3
-    }else if(color.red == color.ocasional4.red && color.green == color.ocasional4.green && color.blue == color.ocasional4.blue){
+    } else if (color.actual == color.ocasional4) {
       raster.img[i, j] <- classe.ocasional4
-    }else if(color.red == color.ocasional5.red && color.green == color.ocasional5.green && color.blue == color.ocasional5.blue){
+    }else if (color.actual == color.ocasional5) {
       raster.img[i, j] <- classe.ocasional5
     }else{
       raster.img[i, j] <- NA
