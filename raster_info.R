@@ -6,7 +6,7 @@ library(rgdal)
 
 #--------------------shapefile---------------------------
 #shp.name <- "classes_sociais_2010/caragua_classes2010.shp"
-shp.name <- "classes_sociais_2010/regions.shp"
+shp.name <- "shapefiles/caragua_editado.shp"
 
 if (!file.exists(shp.name))
   return
@@ -17,7 +17,7 @@ shp.layers <- ogrListLayers(dsn = shp.name)
 shp.data <- readOGR(dsn = shp.name, shp.layers[1])
 shp.extent <- extent(shp.data)
 #--------------------raster---------------------------
-raster.name <- "classes_sociais_2010/editar.tif"
+raster.name <- "rasters/uso_ocasional/int16_uso_ocasional.tif"
 
 if (!file.exists(raster.name))
   return
@@ -34,9 +34,10 @@ rs.extent.new
 
 #---------------------write---------------------------
 #extent      : -45.48924, -45.25525, -23.745, -23.539(xmin, xmax, ymin, ymax)
-raster.extent <- c(-45.48924,-45.25525,-23.745,-23.539)
-extent(rs) <- raster.extent
+#raster.extent <- c(-45.48924,-45.25525,-23.745,-23.539) # classes sociais
+raster.extent <- c(-45.4894, -45.255,-23.745,-23.55) # uso ocasional
 
+extent(rs) <- raster.extent
 writeRaster(rs,
-            "classes_sociais_2010/teste_caragua_classes2010_regioes.tif",
+            "teste_uso_ocasional.tif",
             format = 'GTiff',datatype='INT2U', overwrite=TRUE)

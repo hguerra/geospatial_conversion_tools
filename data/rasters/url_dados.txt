@@ -1,9 +1,43 @@
 url default: dl.dropboxusercontent.com
 
+Classes sociais 2010 real
+
+Dataset
 int16_caragua_classes…ioes.tif
 https://www.dropbox.com/s/p984a63slm4vpb3/int16_caragua_classes2010_regioes.tif?dl=0
 https://dl.dropboxusercontent.com/s/p984a63slm4vpb3/int16_caragua_classes2010_regioes.tif?dl=0
 
+DisplayLayer
 rgb_int16_caragua_cla…ioes.tif
 https://www.dropbox.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0
 https://dl.dropboxusercontent.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0
+
+
+Classes sociais 2025 simulação
+
+Dataset
+int16_simulacao2025_…eline.tif
+https://www.dropbox.com/s/2rlmra6f0zew7gb/int16_simulacao2025_baseline.tif?dl=0
+https://dl.dropboxusercontent.com/s/2rlmra6f0zew7gb/int16_simulacao2025_baseline.tif?dl=0
+
+DisplayLayer
+rgb_int16_simulacao20…3857.tif
+https://www.dropbox.com/s/sjjtz1l1eqwc85g/rgb_int16_simulacao2025_baseline_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/sjjtz1l1eqwc85g/rgb_int16_simulacao2025_baseline_3857.tif?dl=0
+
+
+
+Uso ocasional
+legenda: caragua_occupational_classes
+caragua_occasional_use2010
+
+
+Dataset
+int16_uso_ocasional.tif
+https://www.dropbox.com/s/6ak7j73ku5n4zh3/int16_uso_ocasional.tif?dl=0
+https://dl.dropboxusercontent.com/s/6ak7j73ku5n4zh3/int16_uso_ocasional.tif?dl=0
+
+DisplayLayer
+rgb_int16_uso_ocasion…3857.tif
+https://www.dropbox.com/s/ja9miumnmakqp32/rgb_int16_uso_ocasional_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/ja9miumnmakqp32/rgb_int16_uso_ocasional_3857.tif?dl=0
