@@ -1,5 +1,5 @@
 url default: dl.dropboxusercontent.com
-
+----------------------------------------------------------------------------------------
 Classes sociais 2010 real
 
 Dataset
@@ -12,8 +12,9 @@ rgb_int16_caragua_cla…ioes.tif
 https://www.dropbox.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0
 https://dl.dropboxusercontent.com/s/g7y2n56ulvoh0lv/rgb_int16_caragua_classes2010_regioes.tif?dl=0
 
+----------------------------------------------------------------------------------------
 
-Classes sociais 2025 simulação
+Classes sociais 2025 simulação baseline
 
 Dataset
 int16_simulacao2025_…eline.tif
@@ -25,7 +26,7 @@ rgb_int16_simulacao20…3857.tif
 https://www.dropbox.com/s/sjjtz1l1eqwc85g/rgb_int16_simulacao2025_baseline_3857.tif?dl=0
 https://dl.dropboxusercontent.com/s/sjjtz1l1eqwc85g/rgb_int16_simulacao2025_baseline_3857.tif?dl=0
 
-
+----------------------------------------------------------------------------------------
 
 Uso ocasional
 legenda: caragua_occupational_classes
@@ -41,3 +42,60 @@ DisplayLayer
 rgb_int16_uso_ocasion…3857.tif
 https://www.dropbox.com/s/ja9miumnmakqp32/rgb_int16_uso_ocasional_3857.tif?dl=0
 https://dl.dropboxusercontent.com/s/ja9miumnmakqp32/rgb_int16_uso_ocasional_3857.tif?dl=0
+
+----------------------------------------------------------------------------------------
+int16_simulacao2025_lessgrowth.tif
+caragua_social_classes2025_
+Classes 2025 Simulated Lessgrowth
+
+Dataset
+https://www.dropbox.com/s/yqjbvjnnrxiask9/int16_simulacao2025_lessgrowth.tif?dl=0
+https://dl.dropboxusercontent.com/s/yqjbvjnnrxiask9/int16_simulacao2025_lessgrowth.tif?dl=0
+
+DisplayLayer
+https://www.dropbox.com/s/t38oj9lfwum6txi/rgb_int16_simulacao2025_lessgrowth_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/t38oj9lfwum6txi/rgb_int16_simulacao2025_lessgrowth_3857.tif?dl=0
+
+----------------------------------------------------------------------------------------
+int16_simulacao2025_plusgrowth.tif
+caragua_social_classes2025_
+Classes 2025 Simulated Plusgrowth
+
+Dataset
+https://www.dropbox.com/s/z8843hs381r73l7/int16_simulacao2025_plusgrowth.tif?dl=0
+https://dl.dropboxusercontent.com/s/z8843hs381r73l7/int16_simulacao2025_plusgrowth.tif?dl=0
+
+
+DisplayLayer
+https://www.dropbox.com/s/cf9vik0qols86hk/rgb_int16_simulacao2025_plusgrowth_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/cf9vik0qols86hk/rgb_int16_simulacao2025_plusgrowth_3857.tif?dl=0
+
+----------------------------------------------------------------------------------------
+int16_simulacao2025_poorer.tif
+caragua_social_classes2025_
+Classes 2025 Simulated Poorer
+
+Dataset
+https://www.dropbox.com/s/bejxu70vg5h6tmu/int16_simulacao2025_poorer.tif?dl=0
+https://dl.dropboxusercontent.com/s/bejxu70vg5h6tmu/int16_simulacao2025_poorer.tif?dl=0
+
+
+DisplayLayer
+https://www.dropbox.com/s/i8epzf6nfrkb7r7/rgb_int16_simulacao2025_poorer_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/i8epzf6nfrkb7r7/rgb_int16_simulacao2025_poorer_3857.tif?dl=0
+
+----------------------------------------------------------------------------------------
+int16_simulacao2025_richer_final.tif
+caragua_social_classes2025_
+Classes 2025 Simulated Richer
+
+Dataset
+https://www.dropbox.com/s/v4h5bn7xo4n21u9/int16_simulacao2025_richer_final.tif?dl=0
+https://dl.dropboxusercontent.com/s/v4h5bn7xo4n21u9/int16_simulacao2025_richer_final.tif?dl=0
+
+
+DisplayLayer
+https://www.dropbox.com/s/uqzgewjwa17spfn/rgb_int16_simulacao2025_richer_final_3857.tif?dl=0
+https://dl.dropboxusercontent.com/s/uqzgewjwa17spfn/rgb_int16_simulacao2025_richer_final_3857.tif?dl=0
+
+----------------------------------------------------------------------------------------

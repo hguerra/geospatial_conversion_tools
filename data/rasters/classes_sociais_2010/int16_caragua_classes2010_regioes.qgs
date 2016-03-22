@@ -45,7 +45,7 @@
       </filegroup>
     </legendlayer>
   </legend>
-  <Composer title="Classes2010" visible="0">
+  <Composer title="Classes2010" visible="1">
     <Composition gridVisible="0" printResolution="300" paperWidth="297" snapGridOffsetX="0" guidesVisible="1" snapGridResolution="10" snapGridOffsetY="0" alignmentSnap="1" snapping="1" snapTolerancePixels="5" numPages="1" paperHeight="210" smartGuides="1" printAsRaster="0" generateWorldFile="0">
       <symbol alpha="1" clip_to_extent="1" type="fill" name="">
         <layer pass="0" class="SimpleFill" locked="0">
@@ -76,7 +76,10 @@
             <effect type="outerGlow">
               <prop k="blend_mode" v="0"/>
               <prop k="blur_level" v="3"/>
+              <prop k="color1" v="0,0,255,255"/>
+              <prop k="color2" v="0,255,0,255"/>
               <prop k="color_type" v="0"/>
+              <prop k="discrete" v="0"/>
               <prop k="draw_mode" v="2"/>
               <prop k="enabled" v="0"/>
               <prop k="single_color" v="255,255,255,255"/>
@@ -106,7 +109,10 @@
             <effect type="innerGlow">
               <prop k="blend_mode" v="0"/>
               <prop k="blur_level" v="3"/>
+              <prop k="color1" v="0,0,255,255"/>
+              <prop k="color2" v="0,255,0,255"/>
               <prop k="color_type" v="0"/>
+              <prop k="discrete" v="0"/>
               <prop k="draw_mode" v="2"/>
               <prop k="enabled" v="0"/>
               <prop k="single_color" v="255,255,255,255"/>
@@ -118,7 +124,7 @@
           </effect>
         </layer>
       </symbol>
-      <ComposerLegend symbolWidth="5" title="Classes 2010 Real" boxSpace="2" splitLayer="0" equalColumnWidth="0" titleAlignment="1" symbolHeight="4" wmsLegendHeight="25" wrapChar="" fontColor="#000000" columnSpace="2" wmsLegendWidth="50" columnCount="1">
+      <ComposerLegend symbolWidth="5" title="Social Classesl" boxSpace="2" splitLayer="0" equalColumnWidth="0" titleAlignment="4" symbolHeight="4" wmsLegendHeight="25" wrapChar="" fontColor="#ffffff" columnSpace="2" wmsLegendWidth="50" columnCount="1">
         <styles>
           <style marginBottom="2" name="title">
             <styleFont description="MS Shell Dlg 2,16,-1,5,50,0,0,0,0,0" style=""/>
@@ -136,7 +142,7 @@
             <styleFont description="MS Shell Dlg 2,12,-1,5,50,0,0,0,0,0" style=""/>
           </style>
         </styles>
-        <ComposerItem pagey="165.31" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="5.3195" y="165.31" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="70.3" outlineWidth="0.3" excludeFromExports="0" uuid="{1bc6ed4f-c004-489f-910b-6c82b35e1914}" height="37.9" itemRotation="0" frame="false" pagex="5.3195">
+        <ComposerItem pagey="80" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="106.738" y="80" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="70.3" outlineWidth="0.3" excludeFromExports="0" uuid="{1bc6ed4f-c004-489f-910b-6c82b35e1914}" height="37.9" itemRotation="0" frame="false" pagex="106.738">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
         </ComposerItem>
